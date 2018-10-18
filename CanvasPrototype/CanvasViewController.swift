@@ -150,7 +150,7 @@ extension CanvasViewController: WidgetViewProtocol {
     }
   
     func didRemoveWidget() {
-      print("did remove widget from canvas")
+        // no op?
     }
     
 }
