@@ -124,7 +124,10 @@ extension CanvasViewController: WidgetViewProtocol {
     
     func didTap(sender: WidgetView) {
         self.view.bringSubviewToFront(sender)
-
     }
-        
+  
+    func didRemoveWidget() {
+      print("did remove widget from canvas")
+    }
+    
 }
