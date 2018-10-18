@@ -72,8 +72,6 @@ class CanvasViewController: UIViewController {
     }
   
     private func updateViews() {
-      print("reloading views")
-        
       if let color = canvasModel?.backgroundColor {
         canvas.backgroundColor = UIColor(hexString: color)
       }

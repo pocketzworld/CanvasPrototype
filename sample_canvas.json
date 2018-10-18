@@ -7,7 +7,7 @@
             "y": 300.0,
             "width": 100.0,
             "height": 100.0,
-            "transform": [[1.0, 0.0, 0.0], [1.0, 0.0, 0.0]],
+            "transform": [1.0, 0.0, 0.0, 1.0, 0.0, 0.0],
             "imageName": "elephant",
             "imageBorderColor": "#ff0000"
         },
@@ -17,7 +17,7 @@
             "y": 10.0,
             "width": 100.0,
             "height": 100.0,
-            "transform": [[1.0, 0.0, 0.0], [1.0, 0.0, 0.0]],
+            "transform": [1.0, 0.0, 0.0, 1.0, 0.0, 0.0],
             "imageName": "wow",
             "imageBorderColor": "#00ff00"
         },
@@ -27,7 +27,7 @@
             "y": 200.0,
             "width": 200.0,
             "height": 100.0,
-            "transform": [[1.0, 0.0, 0.0], [1.0, 0.0, 0.0]],
+            "transform": [1.0, 0.0, 0.0, 1.0, 0.0, 0.0],
             "text": "Hello, World",
             "textColor": "#000000",
             "textBackgroundColor": "#ff0000"
@@ -38,7 +38,7 @@
             "y": 240.0,
             "width": 200.0,
             "height": 100.0,
-            "transform": [[1.0, 0.0, 0.0], [1.0, 0.0, 0.0]],
+            "transform": [1.0, 0.0, 0.0, 1.0, 0.0, 0.0],
             "text": "Nice!",
             "textColor": "#0000ff",
             "textBackgroundColor": "#ffffff"
