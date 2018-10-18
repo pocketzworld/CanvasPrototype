@@ -10,6 +10,7 @@ class WidgetView: UIView {
     var lastScale = CGFloat(1.0)
     var lastRotation = CGFloat(0)
     var panGesture: UIPanGestureRecognizer?
+    var widgetModel: WidgetModel?
     
     var delegate: WidgetViewProtocol?
     
@@ -86,9 +87,9 @@ extension WidgetView: UIGestureRecognizerDelegate {
         return gestureRecognizer.view == self && otherGestureRecognizer.view == self
     }
 }
-  
+
 class StickerWidgetView : WidgetView {
-    var widgetModel: WidgetModel? {
+    override var widgetModel: WidgetModel? {
         didSet {
             if let model = widgetModel {
                 if let colorString = model.imageBorderColor, let color = UIColor.init(hexString: colorString) {
@@ -117,7 +118,7 @@ class StickerWidgetView : WidgetView {
 }
 
 class TextWidgetView : WidgetView {
-    var widgetModel : WidgetModel? {
+    override var widgetModel : WidgetModel? {
         didSet {
             if let model = widgetModel {
                 var textColor = UIColor.black

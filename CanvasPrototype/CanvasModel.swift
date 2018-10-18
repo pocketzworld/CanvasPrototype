@@ -9,6 +9,6 @@
 import Foundation
 
 struct CanvasModel: Codable {
-  var backgroundColor: String?
-  var widgets: [WidgetModel]?
+    var backgroundColor: String?
+    var widgets: [WidgetModel]?
 }

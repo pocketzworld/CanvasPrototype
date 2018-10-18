@@ -13,7 +13,13 @@ class CanvasViewController: UIViewController {
     @IBOutlet private weak var textEditContainer: UIView!
     @IBOutlet private weak var textEditField: UITextField!
     
-    private var canvasModel: CanvasModel?
+    private var canvasModel: CanvasModel? {
+      didSet {
+        DispatchQueue.main.async { [weak self] in
+          return self?.updateViews()
+        }
+      }
+    }
     
     private lazy var databaseReference: DatabaseReference = {
        return Database.database().reference()
@@ -64,10 +70,32 @@ class CanvasViewController: UIViewController {
         ]
         canvas.widgetContainerView?.isUserInteractionEnabled = true
     }
-    
+  
+    private func updateViews() {
+      print("reloading views")
+      
+      // remove all widget views
+      canvas.widgetContainerView?.removeFromSuperview()
+      
+      // add widget views from canvasModel
+      if let widgets = canvasModel?.widgets {
+        for widget in widgets {
+          // create and add widgetView to subviews
+          if widget.type == "sticker" {
+            let widgetView = StickerWidgetView()
+            widgetView.widgetModel = widget
+            view.addSubview(widgetView)
+          } else if widget.type == "text" {
+            let widgetView = TextWidgetView()
+            view.addSubview(widgetView)
+            widgetView.widgetModel = widget
+          }
+        }
+      }
+    }
+  
     // MARK: Remote Data Updates
-    
-    
+  
     private func publishChanges(_ JSONString: String) {
         databaseReference.setValue(JSONString)
     }
@@ -90,11 +118,24 @@ class CanvasViewController: UIViewController {
     
     @objc private func save() {
         isEditingCanvas = false
-        
-        if let canvasModel = canvasModel,
-            let jsonContent = try? JSONEncoder().encode(canvasModel),
-            let JSON = String(data: jsonContent, encoding: .utf8) {
-            publishChanges(JSON)
+      
+        guard let canvasSubViews = canvas.widgetContainerView?.subviews else { return }
+      
+        var widgetModels = [WidgetModel]()
+        var newCanvasModel = CanvasModel()
+        newCanvasModel.backgroundColor = canvas.backgroundColor?.toHexString()
+      
+        for subView in canvasSubViews {
+          if let widgetView = subView as? WidgetView, let widget = widgetView.widgetModel {
+            widgetModels.append(widget)
+          }
+        }
+      
+        newCanvasModel.widgets = widgetModels
+      
+        if let jsonContent = try? JSONEncoder().encode(newCanvasModel),
+           let JSON = String(data: jsonContent, encoding: .utf8) {
+           publishChanges(JSON)
         }
     }
     

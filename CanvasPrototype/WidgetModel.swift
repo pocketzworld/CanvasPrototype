@@ -10,20 +10,19 @@ import Foundation
 import UIKit
 
 struct WidgetModel: Codable {
-  var x: CGFloat
-  var y: CGFloat
-  var width: CGFloat
-  var height: CGFloat
-  var type: String // "sticker", "text"
+    var x: CGFloat
+    var y: CGFloat
+    var width: CGFloat
+    var height: CGFloat
+    var type: String // "sticker", "text"
   
-  // text properties
-  var textBackgroundColor: String?
-  var textColor: String?
-  var text: String?
+    var textBackgroundColor: String?
+    var textColor: String?
+    var text: String?
   
-  var imageBorderColor: String?
-  var imageName: String?
-    
+    var imageBorderColor: String?
+    var imageName: String?
+  
     var transform: CGAffineTransform?
     
     static func imageWidgetModel(imageName: String, borderColor: String?) -> WidgetModel {
