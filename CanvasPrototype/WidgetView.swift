@@ -41,6 +41,15 @@ class WidgetView: UIView {
         let pinchGesture = UIPinchGestureRecognizer(target: self, action: #selector(handlePinch(sender:)))
         pinchGesture.delegate = self
         addGestureRecognizer(pinchGesture)
+        
+        let deleteGesture = UILongPressGestureRecognizer(target: self, action: #selector(deleteWidget(sender:)))
+        deleteGesture.delegate = self
+        addGestureRecognizer(deleteGesture)
+    }
+    
+    @objc func deleteWidget(sender: UILongPressGestureRecognizer) {
+        removeFromSuperview()
+        delegate?.didRemoveWidget()
     }
     
     @objc func handlePan(sender: UIPanGestureRecognizer) {
