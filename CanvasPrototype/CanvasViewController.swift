@@ -97,10 +97,16 @@ class CanvasViewController: UIViewController {
     }
     
     @objc private func addImage() {
-        // Sample
-        let view = UIView(frame: CGRect(x: 20, y: 20, width: 40, height: 40))
-        view.backgroundColor = .red
-        canvas.addWidget(view)
+        let vc = StickerPickerViewController()
+        vc.delegate = self
+        let nav = UINavigationController(rootViewController: vc)
+        show(nav, sender: self)
+        
+        
+//        // Sample
+//        let view = UIView(frame: CGRect(x: 20, y: 20, width: 40, height: 40))
+//        view.backgroundColor = .red
+//        canvas.addWidget(view)
     }
     
     @objc private func addText() {
@@ -129,6 +135,7 @@ extension CanvasViewController: WidgetViewProtocol {
     }
     
     func didTap(sender: WidgetView) {
+        print("tapped")
         self.view.bringSubviewToFront(sender)
     }
   
@@ -136,4 +143,11 @@ extension CanvasViewController: WidgetViewProtocol {
       print("did remove widget from canvas")
     }
     
+}
+
+extension CanvasViewController: WidgetPickerDelegate {
+    func pickedWidget(_ widget: WidgetView) {
+        widget.delegate = self
+        canvas.addWidget(widget)
+    }
 }

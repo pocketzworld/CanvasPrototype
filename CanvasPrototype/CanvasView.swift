@@ -32,17 +32,12 @@ class CanvasView: UIView {
     
     func addWidget(_ widget: UIView) {
         if widgetContainerView == nil {
-            let container = UIView()
+            let container = UIView(frame: bounds)
             addSubview(container)
-            
-            NSLayoutConstraint.activate([
-                container.topAnchor.constraint(equalTo: topAnchor),
-                container.bottomAnchor.constraint(equalTo: bottomAnchor),
-                container.leadingAnchor.constraint(equalTo: leadingAnchor),
-                container.trailingAnchor.constraint(equalTo: trailingAnchor)
-                ])
-            
+            container.isMultipleTouchEnabled = true
+            container.isUserInteractionEnabled = true
             widgetContainerView = container
+            
         }
         
         widgetContainerView?.addSubview(widget)
