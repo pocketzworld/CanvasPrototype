@@ -87,10 +87,12 @@ class CanvasViewController: UIViewController {
           // create and add widgetView to subviews
           if widget.type == "sticker" {
             let widgetView = StickerWidgetView()
+            widgetView.delegate = self
             canvas.addWidget(widgetView)
             widgetView.widgetModel = widget
           } else if widget.type == "text" {
             let widgetView = TextWidgetView()
+            widgetView.delegate = self
             canvas.addWidget(widgetView)
             widgetView.widgetModel = widget
           }
