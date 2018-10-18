@@ -133,6 +133,8 @@ class CanvasViewController: UIViewController {
                 if let widgetView = subView as? WidgetView, let widget = widgetView.widgetModel {
                     var model = widget
                     model.transform = widgetView.transform
+                    model.x = widgetView.center.x
+                    model.y = widgetView.center.y
                     widgetModels.append(model)
                 }
             }

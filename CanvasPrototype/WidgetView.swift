@@ -57,7 +57,7 @@ class WidgetView: UIView {
         delegate?.didInteract(sender: self)
 
         let translation = sender.translation(in: self.superview)
-        transform = transform.translatedBy(x: translation.x, y: translation.y)
+        center = CGPoint(x: center.x + translation.x, y: center.y + translation.y)
         sender.setTranslation(CGPoint.zero, in: self.superview)
     }
     
@@ -111,6 +111,10 @@ class StickerWidgetView : WidgetView {
                 if let t = widgetModel?.transform {
                     transform = t
                 }
+                
+                if let x = widgetModel?.x, let y = widgetModel?.y {
+                    center = CGPoint(x: x, y: y)
+                }
             }
         }
     }
@@ -156,7 +160,10 @@ class TextWidgetView : WidgetView {
                 if let t = widgetModel?.transform {
                     transform = t
                 }
-
+                
+                if let x = widgetModel?.x, let y = widgetModel?.y {
+                    center = CGPoint(x: x, y: y)
+                }
             }
         }
     }
