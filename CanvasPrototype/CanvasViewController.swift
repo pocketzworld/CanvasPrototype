@@ -52,6 +52,9 @@ class CanvasViewController: UIViewController {
         textEditField.delegate = self
         let cancelEditGesture = UITapGestureRecognizer(target: self, action: #selector(dismissTextPicker))
         textEditContainer.addGestureRecognizer(cancelEditGesture)
+        
+        layoutForNotEditing()
+
     }
 
     private func layoutForNotEditing() {

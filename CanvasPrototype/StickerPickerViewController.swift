@@ -12,7 +12,7 @@ class StickerPickerViewController: UIViewController {
     weak var delegate: WidgetPickerDelegate?
     let cellIdentifier = "ImageCollectionViewCell"
 
-    var stickerNames: [String] = ["elephant", "wow"]
+    var stickerNames: [String] = ["elephant", "wow", "converse", "sharkingcart", "sinistro", "sonic", "bunny", "dragon"]
     
     @IBOutlet weak var collectionView: UICollectionView!
     
