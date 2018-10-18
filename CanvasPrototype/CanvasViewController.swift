@@ -124,6 +124,7 @@ class CanvasViewController: UIViewController {
     // MARK: Text Picker
     
     private func presentTextPicker(editing: String?) {
+        canvas.bringSubviewToFront(textEditContainer)
         textEditContainer.isHidden = false
         textEditField.becomeFirstResponder()
         textEditField.text = editing
@@ -139,12 +140,11 @@ class CanvasViewController: UIViewController {
 extension CanvasViewController: WidgetViewProtocol {
     
     func didInteract(sender: WidgetView) {
-        self.view.bringSubviewToFront(sender)
+        canvas.widgetContainerView?.bringSubviewToFront(sender)
     }
     
     func didTap(sender: WidgetView) {
-        print("tapped")
-        self.view.bringSubviewToFront(sender)
+        canvas.widgetContainerView?.bringSubviewToFront(sender)
     }
   
     func didRemoveWidget() {

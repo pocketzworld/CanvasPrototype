@@ -122,13 +122,16 @@ class TextWidgetView : WidgetView {
 
                     let label = UILabel()
                     label.text = text
+                    label.adjustsFontSizeToFitWidth = true
+                    label.font = UIFont.systemFont(ofSize: 100.0)
                     label.textColor = textColor
                     label.backgroundColor = backgroundColor
-                
                     label.isUserInteractionEnabled = true
                     label.sizeToFit()
-                    label.center = center
                     addSubview(label)
+
+                    frame = CGRect(x: 0.0, y: 0.0, width: label.bounds.width, height: label.bounds.height)
+                    label.frame = bounds
                 }
             }
         }
