@@ -12,7 +12,7 @@ class CanvasViewController: UIViewController {
     @IBOutlet weak var widget1: WidgetView!
     @IBOutlet weak var widget2: WidgetView!
     @IBOutlet weak var widget3: WidgetView!
-    
+
     var isEditingCanvas: Bool = false {
         didSet {
             if isEditingCanvas {
@@ -39,7 +39,6 @@ class CanvasViewController: UIViewController {
         widget1.delegate = self
         widget2.delegate = self
         widget3.delegate = self
-        
     }
 
     private func layoutForNotEditing() {
@@ -96,8 +95,9 @@ extension CanvasViewController: WidgetViewProtocol {
     
     func didTap(sender: WidgetView) {
         self.view.bringSubviewToFront(sender)
-
     }
-    
-    
+  
+    func didRemoveWidget() {
+      print("did remove widget from canvas")
+    }
 }
