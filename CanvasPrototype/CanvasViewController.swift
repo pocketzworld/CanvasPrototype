@@ -44,6 +44,8 @@ class CanvasViewController: UIViewController {
         beginMonitoring()
         
         textEditField.delegate = self
+        let cancelEditGesture = UITapGestureRecognizer(target: self, action: #selector(dismissTextPicker))
+        textEditContainer.addGestureRecognizer(cancelEditGesture)
     }
 
     private func layoutForNotEditing() {
@@ -127,7 +129,7 @@ class CanvasViewController: UIViewController {
         textEditField.text = editing
     }
     
-    private func dismissTextPicker() {
+    @objc private func dismissTextPicker() {
         textEditContainer.isHidden = true
         textEditField.resignFirstResponder()
         textEditField.text = nil
