@@ -7,8 +7,13 @@
 //
 
 import UIKit
+import FirebaseDatabase
 
 class CanvasViewController: UIViewController {
+    
+    private lazy var databaseReference: DatabaseReference = {
+       return Database.database().reference()
+    }()
     
     var isEditingCanvas: Bool = false {
         didSet {
@@ -30,8 +35,9 @@ class CanvasViewController: UIViewController {
         super.viewDidLoad()
         
         title = "#me"
-        edgesForExtendedLayout = [ .bottom, .left, .right]
+        edgesForExtendedLayout = [ .bottom, .left, .right ]
         layoutForNotEditing()
+        beginMonitoring()
     }
 
     private func layoutForNotEditing() {
@@ -49,6 +55,16 @@ class CanvasViewController: UIViewController {
         ]
     }
     
+    // MARK: Remote Data Updates
+    
+    private func publishChanges(_ JSONString: String) {
+        databaseReference.setValue(JSONString)
+    }
+    
+    private func remoteChangesReceived(_ JSONString: String) {
+        print("Changes received: \(JSONString)")
+    }
+    
     // MARK: Actions
     
     @objc private func edit() {
@@ -57,6 +73,9 @@ class CanvasViewController: UIViewController {
     
     @objc private func save() {
         isEditingCanvas = false
+        
+        // Sample
+        publishChanges("[{\"content\": \"Hello, World!\", \"color\": \(UIColor.randomColor().description)}]")
     }
     
     @objc private func chooseBackground() {
@@ -78,6 +97,15 @@ class CanvasViewController: UIViewController {
         label.sizeToFit()
         label.center = canvas.center
         canvas.addWidget(label)
+    }
+    
+    // MARK: Remote Data
+    
+    private func beginMonitoring() {
+        databaseReference.observe(.value) { snapshot in
+            guard let data = snapshot.value as? String else { return }
+            self.remoteChangesReceived(data)
+        }
     }
 }
 
