@@ -7,12 +7,13 @@
 //
 
 import Foundation
+import UIKit
 
 struct WidgetModel: Codable {
-  var x: Double
-  var y: Double
-  var width: Double
-  var height: Double
+  var x: CGFloat
+  var y: CGFloat
+  var width: CGFloat
+  var height: CGFloat
   var type: String // "sticker", "text"
   
   // text properties
