@@ -11,6 +11,12 @@
 		031CC91221790677002A6C8B /* WidgetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031CC91121790677002A6C8B /* WidgetModel.swift */; };
 		031CC91421790A93002A6C8B /* CanvasModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031CC91321790A93002A6C8B /* CanvasModel.swift */; };
 		455B3D9806A5876A66D73651 /* Pods_CanvasPrototype.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E10CA44FFFC8B8714047197 /* Pods_CanvasPrototype.framework */; };
+		455B3D9806A5876A66D73651 /* Pods_CanvasPrototype.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E10CA44FFFC8B8714047197 /* Pods_CanvasPrototype.framework */; };
+		9468A19C2179094B00EC0ADA /* StickerPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9468A19A2179094B00EC0ADA /* StickerPickerViewController.swift */; };
+		9468A19D2179094B00EC0ADA /* StickerPickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9468A19B2179094B00EC0ADA /* StickerPickerViewController.xib */; };
+		9468A19F2179099A00EC0ADA /* WidgetPickerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9468A19E2179099A00EC0ADA /* WidgetPickerProtocol.swift */; };
+		9468A1A221790D1100EC0ADA /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9468A1A021790D1000EC0ADA /* ImageCollectionViewCell.swift */; };
+		9468A1A321790D1100EC0ADA /* ImageCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9468A1A121790D1100EC0ADA /* ImageCollectionViewCell.xib */; };
 		A4FEB33E2178D53900A0D7B1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4FEB33D2178D53900A0D7B1 /* AppDelegate.swift */; };
 		A4FEB3402178D53900A0D7B1 /* CanvasViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4FEB33F2178D53900A0D7B1 /* CanvasViewController.swift */; };
 		A4FEB3432178D53900A0D7B1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A4FEB3412178D53900A0D7B1 /* Main.storyboard */; };
@@ -28,6 +34,13 @@
 		031CC91321790A93002A6C8B /* CanvasModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasModel.swift; sourceTree = "<group>"; };
 		1544444CFA999E10E67C1A8C /* Pods-CanvasPrototype.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CanvasPrototype.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CanvasPrototype/Pods-CanvasPrototype.debug.xcconfig"; sourceTree = "<group>"; };
 		4E10CA44FFFC8B8714047197 /* Pods_CanvasPrototype.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CanvasPrototype.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1544444CFA999E10E67C1A8C /* Pods-CanvasPrototype.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CanvasPrototype.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CanvasPrototype/Pods-CanvasPrototype.debug.xcconfig"; sourceTree = "<group>"; };
+		4E10CA44FFFC8B8714047197 /* Pods_CanvasPrototype.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CanvasPrototype.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9468A19A2179094B00EC0ADA /* StickerPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StickerPickerViewController.swift; sourceTree = "<group>"; };
+		9468A19B2179094B00EC0ADA /* StickerPickerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StickerPickerViewController.xib; sourceTree = "<group>"; };
+		9468A19E2179099A00EC0ADA /* WidgetPickerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetPickerProtocol.swift; sourceTree = "<group>"; };
+		9468A1A021790D1000EC0ADA /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
+		9468A1A121790D1100EC0ADA /* ImageCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageCollectionViewCell.xib; sourceTree = "<group>"; };
 		A4FEB33A2178D53900A0D7B1 /* CanvasPrototype.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CanvasPrototype.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4FEB33D2178D53900A0D7B1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A4FEB33F2178D53900A0D7B1 /* CanvasViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasViewController.swift; sourceTree = "<group>"; };
@@ -93,12 +106,17 @@
 			isa = PBXGroup;
 			children = (
 				031CC90F21790059002A6C8B /* WidgetView.swift */,
+				9468A19E2179099A00EC0ADA /* WidgetPickerProtocol.swift */,
 				A4FEB33D2178D53900A0D7B1 /* AppDelegate.swift */,
 				A4FEB33F2178D53900A0D7B1 /* CanvasViewController.swift */,
 				A4FEB3512178DCF700A0D7B1 /* CanvasViewController.xib */,
 				A4FEB34F2178DC1500A0D7B1 /* CanvasView.swift */,
 				A4FEB3542178DFAC00A0D7B1 /* UIColor+Canvas.swift */,
 				A4FEB3412178D53900A0D7B1 /* Main.storyboard */,
+				9468A19A2179094B00EC0ADA /* StickerPickerViewController.swift */,
+				9468A19B2179094B00EC0ADA /* StickerPickerViewController.xib */,
+				9468A1A021790D1000EC0ADA /* ImageCollectionViewCell.swift */,
+				9468A1A121790D1100EC0ADA /* ImageCollectionViewCell.xib */,
 				A4FEB3442178D53A00A0D7B1 /* Assets.xcassets */,
 				A4FEB3462178D53A00A0D7B1 /* LaunchScreen.storyboard */,
 				A4FEB3562178E80F00A0D7B1 /* GoogleService-Info.plist */,
@@ -171,6 +189,8 @@
 			files = (
 				A4FEB3522178DCF700A0D7B1 /* CanvasViewController.xib in Resources */,
 				A4FEB3482178D53A00A0D7B1 /* LaunchScreen.storyboard in Resources */,
+				9468A19D2179094B00EC0ADA /* StickerPickerViewController.xib in Resources */,
+				9468A1A321790D1100EC0ADA /* ImageCollectionViewCell.xib in Resources */,
 				A4FEB3572178E80F00A0D7B1 /* GoogleService-Info.plist in Resources */,
 				A4FEB3452178D53A00A0D7B1 /* Assets.xcassets in Resources */,
 				A4FEB3432178D53900A0D7B1 /* Main.storyboard in Resources */,
@@ -238,6 +258,9 @@
 				A4FEB3402178D53900A0D7B1 /* CanvasViewController.swift in Sources */,
 				031CC91421790A93002A6C8B /* CanvasModel.swift in Sources */,
 				A4FEB33E2178D53900A0D7B1 /* AppDelegate.swift in Sources */,
+				9468A1A221790D1100EC0ADA /* ImageCollectionViewCell.swift in Sources */,
+				9468A19F2179099A00EC0ADA /* WidgetPickerProtocol.swift in Sources */,
+				9468A19C2179094B00EC0ADA /* StickerPickerViewController.swift in Sources */,
 				A4FEB3502178DC1500A0D7B1 /* CanvasView.swift in Sources */,
 				031CC91221790677002A6C8B /* WidgetModel.swift in Sources */,
 				A4FEB3552178DFAC00A0D7B1 /* UIColor+Canvas.swift in Sources */,

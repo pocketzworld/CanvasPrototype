@@ -30,7 +30,7 @@ class WidgetView: UIView {
         panGesture.delegate = self
         addGestureRecognizer(panGesture)
         
-        let tapGesture = UIPanGestureRecognizer(target: self, action: #selector(handleTap(sender:)))
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap(sender:)))
         tapGesture.delegate = self
         addGestureRecognizer(tapGesture)
 
@@ -79,17 +79,27 @@ extension WidgetView: UIGestureRecognizerDelegate {
 }
   
 class StickerWidgetView : WidgetView {
-  var widgetModel: WidgetModel?
-  
-  var borderColor: UIColor {
-    get {
-      if let color = widgetModel?.imageBorderColor {
-        return UIColor.init(hexString: color)!
-      } else {
-        return UIColor.clear
-      }
+    var widgetModel: WidgetModel? {
+        didSet {
+            if let model = widgetModel {
+                if let colorString = model.imageBorderColor, let color = UIColor.init(hexString: colorString) {
+                    layer.borderColor = color.cgColor
+                    layer.borderWidth = 3
+                }
+
+                if let name = model.imageName {
+                    subviews.forEach { $0.removeFromSuperview() }
+
+                    let iv = UIImageView(image: UIImage(named: name))
+                    iv.isUserInteractionEnabled = true
+                    iv.frame = CGRect(x: 0, y: 0, width: frame.size.width, height: frame.size.height)
+                    iv.contentMode = .scaleAspectFit
+                    addSubview(iv)
+                }
+            }
+        }
     }
-  }
+  
 }
 
 class TextWidgetView : WidgetView {
