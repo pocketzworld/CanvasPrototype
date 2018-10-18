@@ -36,9 +36,9 @@ class CanvasViewController: UIViewController {
     private func layoutForEditing() {
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Save", style: .done, target: self, action: #selector(save))
         navigationItem.rightBarButtonItems = [
-            UIBarButtonItem(image: UIImage(named: "icon_text"), style: .done, target: self, action: #selector(addText))
+            UIBarButtonItem(image: UIImage(named: "icon_text"), style: .done, target: self, action: #selector(addText)),
             UIBarButtonItem(image: UIImage(named: "icon_image"), style: .done, target: self, action: #selector(addImage)),
-            UIBarButtonItem(image: UIImage(named: "icon_background"), style: .done, target: self, action: #selector(chooseBackground)),
+            UIBarButtonItem(image: UIImage(named: "icon_background"), style: .done, target: self, action: #selector(chooseBackground))
         ]
     }
     
