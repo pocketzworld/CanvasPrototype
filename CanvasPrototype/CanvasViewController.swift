@@ -73,6 +73,10 @@ class CanvasViewController: UIViewController {
   
     private func updateViews() {
       print("reloading views")
+        
+      if let color = canvasModel?.backgroundColor {
+        canvas.backgroundColor = UIColor(hexString: color)
+      }
       
       // remove all widget views
       canvas.widgetContainerView?.removeFromSuperview()
@@ -119,19 +123,22 @@ class CanvasViewController: UIViewController {
     @objc private func save() {
         isEditingCanvas = false
       
-        guard let canvasSubViews = canvas.widgetContainerView?.subviews else { return }
-      
-        var widgetModels = [WidgetModel]()
         var newCanvasModel = CanvasModel()
         newCanvasModel.backgroundColor = canvas.backgroundColor?.toHexString()
-      
-        for subView in canvasSubViews {
-          if let widgetView = subView as? WidgetView, let widget = widgetView.widgetModel {
-            widgetModels.append(widget)
-          }
+        
+        if let canvasSubViews = canvas.widgetContainerView?.subviews {
+            var widgetModels = [WidgetModel]()
+            
+            for subView in canvasSubViews {
+                if let widgetView = subView as? WidgetView, let widget = widgetView.widgetModel {
+                    var model = widget
+                    model.transform = widgetView.transform
+                    widgetModels.append(model)
+                }
+            }
+            
+            newCanvasModel.widgets = widgetModels
         }
-      
-        newCanvasModel.widgets = widgetModels
       
         if let jsonContent = try? JSONEncoder().encode(newCanvasModel),
            let JSON = String(data: jsonContent, encoding: .utf8) {
