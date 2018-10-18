@@ -18,7 +18,7 @@ class CanvasView: UIView {
     
     private var backgroundCanvasMode: CanvasBackgroundMode = .scaled
     private var backgroundImageView: UIImageView?
-    private var widgetContainerView: UIView?
+    var widgetContainerView: UIView?
     
     override var backgroundColor: UIColor? {
         set {

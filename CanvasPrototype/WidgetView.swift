@@ -108,7 +108,39 @@ class StickerWidgetView : WidgetView {
 }
 
 class TextWidgetView : WidgetView {
-  var widgetModel : WidgetModel?
+    var widgetModel : WidgetModel? {
+        didSet {
+            if let model = widgetModel {
+                var textColor = UIColor.black
+                var backgroundColor = UIColor.clear
+                
+                if let textColorString = model.textColor, let color = UIColor(hexString: textColorString) {
+                    textColor = color
+                }
+                
+                if let backgroundColorString = model.textBackgroundColor, let color = UIColor(hexString: backgroundColorString) {
+                    backgroundColor = color
+                }
+
+                if let text = model.text {
+                    subviews.forEach { $0.removeFromSuperview() }
+
+                    let label = UILabel()
+                    label.text = text
+                    label.adjustsFontSizeToFitWidth = true
+                    label.font = UIFont.systemFont(ofSize: 100.0)
+                    label.textColor = textColor
+                    label.backgroundColor = backgroundColor
+                    label.isUserInteractionEnabled = true
+                    label.sizeToFit()
+                    addSubview(label)
+
+                    frame = CGRect(x: 0.0, y: 0.0, width: label.bounds.width, height: label.bounds.height)
+                    label.frame = bounds
+                }
+            }
+        }
+    }
   
   var text: String? {
     didSet {
