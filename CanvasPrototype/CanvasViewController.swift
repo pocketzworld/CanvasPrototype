@@ -7,12 +7,17 @@
 //
 
 import UIKit
+import FirebaseDatabase
 
 class CanvasViewController: UIViewController {
     @IBOutlet weak var widget1: WidgetView!
     @IBOutlet weak var widget2: WidgetView!
     @IBOutlet weak var widget3: WidgetView!
-
+    
+    private lazy var databaseReference: DatabaseReference = {
+       return Database.database().reference()
+    }()
+    
     var isEditingCanvas: Bool = false {
         didSet {
             if isEditingCanvas {
@@ -33,8 +38,9 @@ class CanvasViewController: UIViewController {
         super.viewDidLoad()
         
         title = "#me"
-        edgesForExtendedLayout = [ .bottom, .left, .right]
+        edgesForExtendedLayout = [ .bottom, .left, .right ]
         layoutForNotEditing()
+        beginMonitoring()
         
         widget1.delegate = self
         widget2.delegate = self
@@ -56,6 +62,16 @@ class CanvasViewController: UIViewController {
         ]
     }
     
+    // MARK: Remote Data Updates
+    
+    private func publishChanges(_ JSONString: String) {
+        databaseReference.setValue(JSONString)
+    }
+    
+    private func remoteChangesReceived(_ JSONString: String) {
+        print("Changes received: \(JSONString)")
+    }
+    
     // MARK: Actions
     
     @objc private func edit() {
@@ -64,6 +80,9 @@ class CanvasViewController: UIViewController {
     
     @objc private func save() {
         isEditingCanvas = false
+        
+        // Sample
+        publishChanges("[{\"content\": \"Hello, World!\", \"color\": \(UIColor.randomColor().description)}]")
     }
     
     @objc private func chooseBackground() {
@@ -86,9 +105,19 @@ class CanvasViewController: UIViewController {
         label.center = canvas.center
         canvas.addWidget(label)
     }
+    
+    // MARK: Remote Data
+    
+    private func beginMonitoring() {
+        databaseReference.observe(.value) { snapshot in
+            guard let data = snapshot.value as? String else { return }
+            self.remoteChangesReceived(data)
+        }
+    }
 }
 
 extension CanvasViewController: WidgetViewProtocol {
+    
     func didInteract(sender: WidgetView) {
         self.view.bringSubviewToFront(sender)
     }
@@ -100,4 +129,5 @@ extension CanvasViewController: WidgetViewProtocol {
     func didRemoveWidget() {
       print("did remove widget from canvas")
     }
+    
 }
