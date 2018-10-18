@@ -54,7 +54,6 @@ class CanvasViewController: UIViewController {
         textEditContainer.addGestureRecognizer(cancelEditGesture)
         
         layoutForNotEditing()
-
     }
 
     private func layoutForNotEditing() {
@@ -80,7 +79,7 @@ class CanvasViewController: UIViewController {
       }
       
       // remove all widget views
-      canvas.widgetContainerView?.removeFromSuperview()
+      canvas.widgetContainerView?.subviews.forEach { $0.removeFromSuperview() }
       
       // add widget views from canvasModel
       if let widgets = canvasModel?.widgets {
@@ -88,11 +87,11 @@ class CanvasViewController: UIViewController {
           // create and add widgetView to subviews
           if widget.type == "sticker" {
             let widgetView = StickerWidgetView()
+            canvas.addWidget(widgetView)
             widgetView.widgetModel = widget
-            view.addSubview(widgetView)
           } else if widget.type == "text" {
             let widgetView = TextWidgetView()
-            view.addSubview(widgetView)
+            canvas.addWidget(widgetView)
             widgetView.widgetModel = widget
           }
         }

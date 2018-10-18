@@ -26,7 +26,7 @@ struct WidgetModel: Codable {
     var transform: CGAffineTransform?
     
     static func imageWidgetModel(imageName: String, borderColor: String?) -> WidgetModel {
-        return WidgetModel(x: 0.0, y: 0.0, width: 0.0, height: 0.0, type: "image", textBackgroundColor: nil, textColor: nil, text: nil, imageBorderColor: borderColor, imageName: imageName, transform: CGAffineTransform.identity)
+        return WidgetModel(x: 0.0, y: 0.0, width: 0.0, height: 0.0, type: "sticker", textBackgroundColor: nil, textColor: nil, text: nil, imageBorderColor: borderColor, imageName: imageName, transform: CGAffineTransform.identity)
     }
     
     static func textWidgetModel(text: String) -> WidgetModel {
