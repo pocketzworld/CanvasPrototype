@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		943EFD1A2178E273004CE08E /* WidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 943EFD192178E273004CE08E /* WidgetView.swift */; };
 		A4FEB33E2178D53900A0D7B1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4FEB33D2178D53900A0D7B1 /* AppDelegate.swift */; };
 		A4FEB3402178D53900A0D7B1 /* CanvasViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4FEB33F2178D53900A0D7B1 /* CanvasViewController.swift */; };
 		A4FEB3432178D53900A0D7B1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A4FEB3412178D53900A0D7B1 /* Main.storyboard */; };
@@ -18,6 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		943EFD192178E273004CE08E /* WidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetView.swift; sourceTree = "<group>"; };
 		A4FEB33A2178D53900A0D7B1 /* CanvasPrototype.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CanvasPrototype.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4FEB33D2178D53900A0D7B1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A4FEB33F2178D53900A0D7B1 /* CanvasViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasViewController.swift; sourceTree = "<group>"; };
@@ -66,6 +68,7 @@
 				A4FEB34F2178DC1500A0D7B1 /* CanvasView.swift */,
 				A4FEB3542178DFAC00A0D7B1 /* UIColor+Canvas.swift */,
 				A4FEB3412178D53900A0D7B1 /* Main.storyboard */,
+				943EFD192178E273004CE08E /* WidgetView.swift */,
 				A4FEB3442178D53A00A0D7B1 /* Assets.xcassets */,
 				A4FEB3462178D53A00A0D7B1 /* LaunchScreen.storyboard */,
 				A4FEB3492178D53A00A0D7B1 /* Info.plist */,
@@ -149,6 +152,7 @@
 				A4FEB33E2178D53900A0D7B1 /* AppDelegate.swift in Sources */,
 				A4FEB3502178DC1500A0D7B1 /* CanvasView.swift in Sources */,
 				A4FEB3552178DFAC00A0D7B1 /* UIColor+Canvas.swift in Sources */,
+				943EFD1A2178E273004CE08E /* WidgetView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

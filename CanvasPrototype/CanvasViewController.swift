@@ -9,6 +9,9 @@
 import UIKit
 
 class CanvasViewController: UIViewController {
+    @IBOutlet weak var widget1: WidgetView!
+    @IBOutlet weak var widget2: WidgetView!
+    @IBOutlet weak var widget3: WidgetView!
     
     var isEditingCanvas: Bool = false {
         didSet {
@@ -32,6 +35,11 @@ class CanvasViewController: UIViewController {
         title = "#me"
         edgesForExtendedLayout = [ .bottom, .left, .right]
         layoutForNotEditing()
+        
+        widget1.delegate = self
+        widget2.delegate = self
+        widget3.delegate = self
+        
     }
 
     private func layoutForNotEditing() {
@@ -81,3 +89,15 @@ class CanvasViewController: UIViewController {
     }
 }
 
+extension CanvasViewController: WidgetViewProtocol {
+    func didInteract(sender: WidgetView) {
+        self.view.bringSubviewToFront(sender)
+    }
+    
+    func didTap(sender: WidgetView) {
+        self.view.bringSubviewToFront(sender)
+
+    }
+    
+    
+}
