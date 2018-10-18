@@ -57,7 +57,7 @@ class WidgetView: UIView {
         delegate?.didInteract(sender: self)
 
         let translation = sender.translation(in: self.superview)
-        center = CGPoint(x: center.x + translation.x, y: center.y + translation.y)
+        transform = transform.translatedBy(x: translation.x, y: translation.y)
         sender.setTranslation(CGPoint.zero, in: self.superview)
     }
     
@@ -107,6 +107,10 @@ class StickerWidgetView : WidgetView {
                     
                     frame = iv.bounds
                 }
+                
+                if let t = widgetModel?.transform {
+                    transform = t
+                }
             }
         }
     }
@@ -148,6 +152,11 @@ class TextWidgetView : WidgetView {
                     frame = CGRect(x: 0.0, y: 0.0, width: label.bounds.width, height: label.bounds.height)
                     label.frame = bounds
                 }
+                
+                if let t = widgetModel?.transform {
+                    transform = t
+                }
+
             }
         }
     }
