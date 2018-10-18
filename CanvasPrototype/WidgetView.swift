@@ -100,6 +100,10 @@ class StickerWidgetView : WidgetView {
         }
     }
   
+    override func handleTap(sender: UITapGestureRecognizer) {
+        super.handleTap(sender: sender)
+        transform = transform.concatenating(CGAffineTransform(scaleX: -1, y: 1))
+    }
 }
 
 class TextWidgetView : WidgetView {
