@@ -72,6 +72,7 @@ class CanvasViewController: UIViewController {
     
     private func remoteChangesReceived(_ JSONString: String) {
         print("Changes received: \(JSONString)")
+      
         JSONPayload = JSONString
     }
     
