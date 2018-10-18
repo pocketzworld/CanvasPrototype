@@ -79,11 +79,11 @@ extension WidgetView: UIGestureRecognizerDelegate {
 }
   
 class StickerWidgetView : WidgetView {
-  var widgetModel: StickerWidgetModel?
+  var widgetModel: WidgetModel?
   
   var borderColor: UIColor {
     get {
-      if let color = widgetModel?.borderColor {
+      if let color = widgetModel?.imageBorderColor {
         return UIColor.init(hexString: color)!
       } else {
         return UIColor.clear
@@ -93,7 +93,7 @@ class StickerWidgetView : WidgetView {
 }
 
 class TextWidgetView : WidgetView {
-  var widgetModel : TextWidgetModel?
+  var widgetModel : WidgetModel?
   
   var text: String? {
     didSet {
@@ -116,49 +116,11 @@ class TextWidgetView : WidgetView {
   
   var textBackgroundColor: UIColor {
     get {
-      if let color = widgetModel?.backgroundColor {
+      if let color = widgetModel?.textBackgroundColor {
         return UIColor.init(hexString: color)!
       } else {
         return UIColor.clear
       }
     }
-  }
-}
-
-// base model for serializing view attributes
-class WidgetModel {
-  var x: Int
-  var y: Int
-  var width: Int
-  var height: Int
-  var type: String?
-  
-  init(x: Int, y: Int, width: Int, height: Int) {
-    self.x = x
-    self.y = y
-    self.width = width
-    self.height = height
-  }
-}
-
-// sticker widget model
-class StickerWidgetModel : WidgetModel {
-  var borderColor: String?
-  
-  override init(x: Int, y: Int, width: Int, height: Int) {
-    super.init(x: x, y: y, width: width, height: height)
-    self.type = "sticker"
-  }
-}
-
-// text widget model
-class TextWidgetModel : WidgetModel {
-  var backgroundColor: String?
-  var textColor: String?
-  var text: String?
-
-  override init(x: Int, y: Int, width: Int, height: Int) {
-    super.init(x: x, y: y, width: width, height: height)
-    self.type = "text"
   }
 }
