@@ -41,11 +41,9 @@ extension StickerPickerViewController: UICollectionViewDelegate, UICollectionVie
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let imageName = stickerNames[indexPath.item]
         let model = WidgetModel.imageWidgetModel(imageName: imageName, borderColor: nil)
-        if let image = UIImage(named: imageName) {
-            let widget = StickerWidgetView.init(frame: CGRect(x: 0, y: 0, width: image.size.width, height: image.size.height))
-            widget.widgetModel = model
-            delegate?.pickedWidget(widget)
-        }
+        let widget = StickerWidgetView.init()
+        widget.widgetModel = model
+        delegate?.pickedWidget(widget)
         dismiss(animated: true, completion: nil)
     }
     
