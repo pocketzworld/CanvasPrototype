@@ -52,6 +52,7 @@ class CanvasViewController: UIViewController {
         navigationItem.leftBarButtonItem = nil
         navigationItem.rightBarButtonItems = nil
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Edit", style: .done, target: self, action: #selector(edit))
+        canvas.widgetContainerView?.isUserInteractionEnabled = false
     }
     
     private func layoutForEditing() {
@@ -61,6 +62,7 @@ class CanvasViewController: UIViewController {
             UIBarButtonItem(image: UIImage(named: "icon_image"), style: .done, target: self, action: #selector(addImage)),
             UIBarButtonItem(image: UIImage(named: "icon_background"), style: .done, target: self, action: #selector(chooseBackground))
         ]
+        canvas.widgetContainerView?.isUserInteractionEnabled = true
     }
     
     // MARK: Remote Data Updates
