@@ -165,10 +165,11 @@ extension CanvasViewController: WidgetPickerDelegate {
 extension CanvasViewController: UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        guard let text = textField.text else { return false }
+        
         let widget = TextWidgetView()
         widget.delegate = self
-        widget.text = textField.text
-        widget.sizeToFit()
+        widget.widgetModel = WidgetModel.textWidgetModel(text: text)
         widget.center = canvas.center
         canvas.addWidget(widget)
         
