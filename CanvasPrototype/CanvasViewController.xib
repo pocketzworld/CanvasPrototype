@@ -12,12 +12,32 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CanvasViewController" customModule="CanvasPrototype" customModuleProvider="target">
             <connections>
                 <outlet property="view" destination="iN0-l3-epB" id="Itk-aj-CID"/>
+                <outlet property="widget1" destination="9ua-Q4-Z35" id="wp5-gh-uv7"/>
+                <outlet property="widget2" destination="9bq-Rl-Far" id="Wrg-um-R8m"/>
+                <outlet property="widget3" destination="bxM-AX-3L6" id="oVy-yw-QoK"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="CanvasView" customModule="CanvasPrototype" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9ua-Q4-Z35" customClass="WidgetView" customModule="CanvasPrototype" customModuleProvider="target">
+                    <rect key="frame" x="83" y="130" width="240" height="128"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" red="1" green="0.37647058820000001" blue="0.56470588239999997" alpha="1" colorSpace="calibratedRGB"/>
+                </view>
+                <view multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9bq-Rl-Far" customClass="WidgetView" customModule="CanvasPrototype" customModuleProvider="target">
+                    <rect key="frame" x="23" y="306" width="240" height="128"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                </view>
+                <view multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bxM-AX-3L6" customClass="WidgetView" customModule="CanvasPrototype" customModuleProvider="target">
+                    <rect key="frame" x="147" y="435" width="240" height="128"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" red="1" green="0.82745098039999998" blue="0.1843137255" alpha="1" colorSpace="calibratedRGB"/>
+                </view>
+            </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
