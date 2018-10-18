@@ -92,14 +92,19 @@ class StickerWidgetView : WidgetView {
 
                     let iv = UIImageView(image: UIImage(named: name))
                     iv.isUserInteractionEnabled = true
-                    iv.frame = CGRect(x: 0, y: 0, width: frame.size.width, height: frame.size.height)
                     iv.contentMode = .scaleAspectFit
                     addSubview(iv)
+                    
+                    frame = iv.bounds
                 }
             }
         }
     }
   
+    override func handleTap(sender: UITapGestureRecognizer) {
+        super.handleTap(sender: sender)
+        transform = transform.concatenating(CGAffineTransform(scaleX: -1, y: 1))
+    }
 }
 
 class TextWidgetView : WidgetView {
