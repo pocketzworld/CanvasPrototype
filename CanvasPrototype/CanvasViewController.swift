@@ -14,7 +14,7 @@ class CanvasViewController: UIViewController {
     @IBOutlet weak var widget2: WidgetView!
     @IBOutlet weak var widget3: WidgetView!
     
-    private var JSONPayload: String?
+    private var canvasModel: CanvasModel?
     
     private lazy var databaseReference: DatabaseReference = {
        return Database.database().reference()
@@ -66,14 +66,19 @@ class CanvasViewController: UIViewController {
     
     // MARK: Remote Data Updates
     
+    
     private func publishChanges(_ JSONString: String) {
         databaseReference.setValue(JSONString)
     }
     
     private func remoteChangesReceived(_ JSONString: String) {
-        print("Changes received: \(JSONString)")
-      
-        JSONPayload = JSONString
+        guard let data = JSONString.data(using: .utf8) else { return }
+        do {
+            let thing = try JSONDecoder().decode(CanvasModel.self, from: data)
+            canvasModel = thing
+        } catch {
+            print(error)
+        }
     }
     
     // MARK: Actions
@@ -85,9 +90,10 @@ class CanvasViewController: UIViewController {
     @objc private func save() {
         isEditingCanvas = false
         
-        // Sample
-        if let json = JSONPayload {
-            publishChanges(json)
+        if let canvasModel = canvasModel,
+            let jsonContent = try? JSONEncoder().encode(canvasModel),
+            let JSON = String(data: jsonContent, encoding: .utf8) {
+            publishChanges(JSON)
         }
     }
     
@@ -116,8 +122,8 @@ class CanvasViewController: UIViewController {
     
     private func beginMonitoring() {
         databaseReference.observe(.value) { snapshot in
-            guard let data = snapshot.value as? String else { return }
-            self.remoteChangesReceived(data)
+            guard let snapshotString = snapshot.value as? String, snapshotString.count > 0 else { return }
+            self.remoteChangesReceived(snapshotString)
         }
     }
 }
