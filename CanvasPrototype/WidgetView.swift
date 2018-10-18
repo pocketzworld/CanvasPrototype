@@ -1,16 +1,9 @@
-//
-//  WidgetView.swift
-//  CanvasPrototype
-//
-//  Created by Jimmy Xu on 10/18/18.
-//  Copyright © 2018 Highrise. All rights reserved.
-//
-
 import UIKit
 
 protocol WidgetViewProtocol: NSObjectProtocol {
     func didInteract(sender: WidgetView)
     func didTap(sender: WidgetView)
+    func didRemoveWidget()
 }
 
 class WidgetView: UIView {
@@ -77,11 +70,95 @@ class WidgetView: UIView {
         transform = transform.scaledBy(x: nextScale, y: nextScale)
         lastScale = sender.scale
     }
-    
 }
 
 extension WidgetView: UIGestureRecognizerDelegate {
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
         return gestureRecognizer.view == self && otherGestureRecognizer.view == self
     }
+}
+  
+class StickerWidgetView : WidgetView {
+  var widgetModel: StickerWidgetModel?
+  
+  var borderColor: UIColor {
+    get {
+      if let color = widgetModel?.borderColor {
+        return UIColor.init(hexString: color)!
+      } else {
+        return UIColor.clear
+      }
+    }
+  }
+}
+
+class TextWidgetView : WidgetView {
+  var widgetModel : TextWidgetModel?
+  
+  var text: String? {
+    didSet {
+      widgetModel?.text = text
+      if text?.isEmpty ?? false {
+        delegate?.didRemoveWidget()
+      }
+    }
+  }
+  
+  var textColor: UIColor {
+    get {
+      if let color = widgetModel?.textColor {
+        return UIColor.init(hexString: color)!
+      } else {
+        return UIColor.white
+      }
+    }
+  }
+  
+  var textBackgroundColor: UIColor {
+    get {
+      if let color = widgetModel?.backgroundColor {
+        return UIColor.init(hexString: color)!
+      } else {
+        return UIColor.clear
+      }
+    }
+  }
+}
+
+// base model for serializing view attributes
+class WidgetModel {
+  var x: Int
+  var y: Int
+  var width: Int
+  var height: Int
+  var type: String?
+  
+  init(x: Int, y: Int, width: Int, height: Int) {
+    self.x = x
+    self.y = y
+    self.width = width
+    self.height = height
+  }
+}
+
+// sticker widget model
+class StickerWidgetModel : WidgetModel {
+  var borderColor: String?
+  
+  override init(x: Int, y: Int, width: Int, height: Int) {
+    super.init(x: x, y: y, width: width, height: height)
+    self.type = "sticker"
+  }
+}
+
+// text widget model
+class TextWidgetModel : WidgetModel {
+  var backgroundColor: String?
+  var textColor: String?
+  var text: String?
+
+  override init(x: Int, y: Int, width: Int, height: Int) {
+    super.init(x: x, y: y, width: width, height: height)
+    self.type = "text"
+  }
 }
