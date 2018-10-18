@@ -10,9 +10,8 @@ import UIKit
 import FirebaseDatabase
 
 class CanvasViewController: UIViewController {
-    @IBOutlet weak var widget1: WidgetView!
-    @IBOutlet weak var widget2: WidgetView!
-    @IBOutlet weak var widget3: WidgetView!
+    @IBOutlet private weak var textEditContainer: UIView!
+    @IBOutlet private weak var textEditField: UITextField!
     
     private var canvasModel: CanvasModel?
     
@@ -44,9 +43,7 @@ class CanvasViewController: UIViewController {
         layoutForNotEditing()
         beginMonitoring()
         
-        widget1.delegate = self
-        widget2.delegate = self
-        widget3.delegate = self
+        textEditField.delegate = self
     }
 
     private func layoutForNotEditing() {
@@ -107,21 +104,10 @@ class CanvasViewController: UIViewController {
         vc.delegate = self
         let nav = UINavigationController(rootViewController: vc)
         show(nav, sender: self)
-        
-        
-//        // Sample
-//        let view = UIView(frame: CGRect(x: 20, y: 20, width: 40, height: 40))
-//        view.backgroundColor = .red
-//        canvas.addWidget(view)
     }
     
     @objc private func addText() {
-        // Sample
-        let label = UILabel()
-        label.text = "Hello World"
-        label.sizeToFit()
-        label.center = canvas.center
-        canvas.addWidget(label)
+        presentTextPicker(editing: nil)
     }
     
     // MARK: Remote Data
@@ -131,6 +117,20 @@ class CanvasViewController: UIViewController {
             guard let snapshotString = snapshot.value as? String, snapshotString.count > 0 else { return }
             self.remoteChangesReceived(snapshotString)
         }
+    }
+    
+    // MARK: Text Picker
+    
+    private func presentTextPicker(editing: String?) {
+        textEditContainer.isHidden = false
+        textEditField.becomeFirstResponder()
+        textEditField.text = editing
+    }
+    
+    private func dismissTextPicker() {
+        textEditContainer.isHidden = true
+        textEditField.resignFirstResponder()
+        textEditField.text = nil
     }
 }
 
@@ -152,8 +152,27 @@ extension CanvasViewController: WidgetViewProtocol {
 }
 
 extension CanvasViewController: WidgetPickerDelegate {
+    
     func pickedWidget(_ widget: WidgetView) {
         widget.delegate = self
         canvas.addWidget(widget)
     }
+
+}
+
+extension CanvasViewController: UITextFieldDelegate {
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        let widget = TextWidgetView()
+        widget.delegate = self
+        widget.text = textField.text
+        widget.sizeToFit()
+        widget.center = canvas.center
+        canvas.addWidget(widget)
+        
+        dismissTextPicker()
+
+        return true
+    }
+    
 }
