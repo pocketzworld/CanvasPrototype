@@ -1,0 +1,47 @@
+{
+    "backgroundColor": "#666666",
+    "widgets": [
+        {
+            "type": "sticker",
+            "x": 50.0,
+            "y": 300.0,
+            "width": 100.0,
+            "height": 100.0,
+            "transform": [[1.0, 0.0, 0.0], [1.0, 0.0, 0.0]],
+            "imageName": "cat1",
+            "imageBorderColor": "#ff0000"
+        },
+        {
+            "type": "sticker",
+            "x": 10.0,
+            "y": 10.0,
+            "width": 100.0,
+            "height": 100.0,
+            "transform": [[1.0, 0.0, 0.0], [1.0, 0.0, 0.0]],
+            "imageName": "cat2",
+            "imageBorderColor": "#00ff00"
+        },
+        {
+            "type": "text",
+            "x": 50.0,
+            "y": 200.0,
+            "width": 200.0,
+            "height": 100.0,
+            "transform": [[1.0, 0.0, 0.0], [1.0, 0.0, 0.0]],
+            "text": "Hello, World",
+            "textColor": "#000000",
+            "textBackgroundColor": "#ff0000"
+        },
+        {
+            "type": "text",
+            "x": 100.0,
+            "y": 240.0,
+            "width": 200.0,
+            "height": 100.0,
+            "transform": [[1.0, 0.0, 0.0], [1.0, 0.0, 0.0]],
+            "text": "Nice!",
+            "textColor": "#0000ff",
+            "textBackgroundColor": "#ffffff"
+        }
+    ]
+}

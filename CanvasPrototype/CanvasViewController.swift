@@ -14,6 +14,8 @@ class CanvasViewController: UIViewController {
     @IBOutlet weak var widget2: WidgetView!
     @IBOutlet weak var widget3: WidgetView!
     
+    private var JSONPayload: String?
+    
     private lazy var databaseReference: DatabaseReference = {
        return Database.database().reference()
     }()
@@ -70,6 +72,7 @@ class CanvasViewController: UIViewController {
     
     private func remoteChangesReceived(_ JSONString: String) {
         print("Changes received: \(JSONString)")
+        JSONPayload = JSONString
     }
     
     // MARK: Actions
@@ -82,7 +85,9 @@ class CanvasViewController: UIViewController {
         isEditingCanvas = false
         
         // Sample
-        publishChanges("[{\"content\": \"Hello, World!\", \"color\": \(UIColor.randomColor().description)}]")
+        if let json = JSONPayload {
+            publishChanges(json)
+        }
     }
     
     @objc private func chooseBackground() {
