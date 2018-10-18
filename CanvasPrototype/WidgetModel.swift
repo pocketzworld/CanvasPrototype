@@ -27,4 +27,8 @@ struct WidgetModel: Codable {
     static func imageWidgetModel(imageName: String, borderColor: String?) -> WidgetModel {
         return WidgetModel(x: 0.0, y: 0.0, width: 0.0, height: 0.0, type: "image", textBackgroundColor: nil, textColor: nil, text: nil, imageBorderColor: borderColor, imageName: imageName)
     }
+    
+    static func textWidgetModel(text: String) -> WidgetModel {
+        return WidgetModel(x: 0.0, y: 0.0, width: 0.0, height: 0.0, type: "text", textBackgroundColor: nil, textColor: nil, text: text, imageBorderColor: nil, imageName: nil)
+    }
 }
