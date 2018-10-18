@@ -96,6 +96,10 @@ class CanvasViewController: UIViewController {
           }
         }
       }
+        
+      if !isEditingCanvas {
+            layoutForNotEditing()
+      }
     }
   
     // MARK: Remote Data Updates
