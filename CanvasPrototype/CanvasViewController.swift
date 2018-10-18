@@ -20,10 +20,17 @@ class CanvasViewController: UIViewController {
         }
     }
     
+    var canvas: CanvasView {
+        get {
+            return view as! CanvasView
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         title = "#me"
+        edgesForExtendedLayout = [ .bottom, .left, .right]
         layoutForNotEditing()
     }
 
@@ -53,15 +60,24 @@ class CanvasViewController: UIViewController {
     }
     
     @objc private func chooseBackground() {
-        
+        // Sample
+        canvas.backgroundColor = UIColor.randomColor()
     }
     
     @objc private func addImage() {
-        
+        // Sample
+        let view = UIView(frame: CGRect(x: 20, y: 20, width: 40, height: 40))
+        view.backgroundColor = .red
+        canvas.addWidget(view)
     }
     
     @objc private func addText() {
-        
+        // Sample
+        let label = UILabel()
+        label.text = "Hello World"
+        label.sizeToFit()
+        label.center = canvas.center
+        canvas.addWidget(label)
     }
 }
 

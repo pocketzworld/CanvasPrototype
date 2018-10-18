@@ -12,6 +12,9 @@
 		A4FEB3432178D53900A0D7B1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A4FEB3412178D53900A0D7B1 /* Main.storyboard */; };
 		A4FEB3452178D53A00A0D7B1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A4FEB3442178D53A00A0D7B1 /* Assets.xcassets */; };
 		A4FEB3482178D53A00A0D7B1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A4FEB3462178D53A00A0D7B1 /* LaunchScreen.storyboard */; };
+		A4FEB3502178DC1500A0D7B1 /* CanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4FEB34F2178DC1500A0D7B1 /* CanvasView.swift */; };
+		A4FEB3522178DCF700A0D7B1 /* CanvasViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4FEB3512178DCF700A0D7B1 /* CanvasViewController.xib */; };
+		A4FEB3552178DFAC00A0D7B1 /* UIColor+Canvas.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4FEB3542178DFAC00A0D7B1 /* UIColor+Canvas.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +25,9 @@
 		A4FEB3442178D53A00A0D7B1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A4FEB3472178D53A00A0D7B1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A4FEB3492178D53A00A0D7B1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A4FEB34F2178DC1500A0D7B1 /* CanvasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasView.swift; sourceTree = "<group>"; };
+		A4FEB3512178DCF700A0D7B1 /* CanvasViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CanvasViewController.xib; sourceTree = "<group>"; };
+		A4FEB3542178DFAC00A0D7B1 /* UIColor+Canvas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Canvas.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +62,9 @@
 			children = (
 				A4FEB33D2178D53900A0D7B1 /* AppDelegate.swift */,
 				A4FEB33F2178D53900A0D7B1 /* CanvasViewController.swift */,
+				A4FEB3512178DCF700A0D7B1 /* CanvasViewController.xib */,
+				A4FEB34F2178DC1500A0D7B1 /* CanvasView.swift */,
+				A4FEB3542178DFAC00A0D7B1 /* UIColor+Canvas.swift */,
 				A4FEB3412178D53900A0D7B1 /* Main.storyboard */,
 				A4FEB3442178D53A00A0D7B1 /* Assets.xcassets */,
 				A4FEB3462178D53A00A0D7B1 /* LaunchScreen.storyboard */,
@@ -122,6 +131,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A4FEB3522178DCF700A0D7B1 /* CanvasViewController.xib in Resources */,
 				A4FEB3482178D53A00A0D7B1 /* LaunchScreen.storyboard in Resources */,
 				A4FEB3452178D53A00A0D7B1 /* Assets.xcassets in Resources */,
 				A4FEB3432178D53900A0D7B1 /* Main.storyboard in Resources */,
@@ -137,6 +147,8 @@
 			files = (
 				A4FEB3402178D53900A0D7B1 /* CanvasViewController.swift in Sources */,
 				A4FEB33E2178D53900A0D7B1 /* AppDelegate.swift in Sources */,
+				A4FEB3502178DC1500A0D7B1 /* CanvasView.swift in Sources */,
+				A4FEB3552178DFAC00A0D7B1 /* UIColor+Canvas.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
